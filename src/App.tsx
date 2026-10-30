@@ -298,7 +298,7 @@ function Hero() {
       <motion.img
         src="/sky.jpg"
         alt=""
-        className="absolute inset-0 z-0 h-[120%] w-full object-cover"
+        className="absolute inset-0 z-0 h-[130%] w-full object-cover object-top"
         style={{ y: bgY }}
       />
 
@@ -323,7 +323,7 @@ function Hero() {
       <motion.img
         src="/building.webp"
         alt=""
-        className="absolute inset-0 z-30 h-[120%] w-full object-cover pointer-events-none"
+        className="absolute inset-0 z-30 h-[130%] w-full object-cover object-top pointer-events-none"
         style={{ y: bgY }}
       />
     </section>
@@ -703,20 +703,39 @@ function MountainContent() {
     target: wrapperRef,
     offset: ['start start', 'end end'],
   })
-  const mountainY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%'])
+  const mountainY = useTransform(scrollYProgress, [0, 1], ['0%', '-18%'])
 
   return (
-    <div ref={wrapperRef} className="relative z-40 -mt-[25vh]">
-      <div className="absolute -top-[10vh] left-0 right-0 bottom-0 overflow-hidden pointer-events-none">
-        <motion.img
-          src="/mountain.jpg"
+    <div ref={wrapperRef} className="relative z-40 -mt-[32vh] md:-mt-[35vh]">
+      {/* Sky continuation: fills transparent mountain top so brand-dark never shows at the seam */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 -top-[5vh] h-[85vh] overflow-hidden pointer-events-none"
+      >
+        <img
+          src="/sky.jpg"
           alt=""
-          className="absolute inset-x-0 -top-[10vh] bottom-0 h-[120%] w-full object-cover object-top"
+          className="absolute inset-0 h-[120%] w-full object-cover object-bottom"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(41,80,202,0) 0%, rgba(41,80,202,0.15) 35%, rgba(2,3,25,0.55) 72%, #020319 100%)',
+          }}
+        />
+      </div>
+
+      <div className="absolute -top-[18vh] left-0 right-0 bottom-0 overflow-hidden pointer-events-none">
+        <motion.img
+          src="/mountain.webp"
+          alt=""
+          className="absolute inset-x-0 -top-[12vh] bottom-0 h-[125%] w-full object-cover object-top"
           style={{ y: mountainY }}
         />
       </div>
 
-      <div id="about" className="relative pt-24 sm:pt-32 md:pt-40">
+      <div id="about" className="relative pt-28 sm:pt-36 md:pt-44">
         <div className="flex flex-col items-center px-5 sm:px-6 py-16 md:py-32">
           <p
             className="max-w-[600px] text-sm sm:text-base md:text-lg font-medium text-white/90 leading-relaxed text-center"
