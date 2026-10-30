@@ -1,0 +1,6 @@
+node_modules
+dist
+.DS_Store
+*.local
+.upload-jwt
+deploy-manifest.json
