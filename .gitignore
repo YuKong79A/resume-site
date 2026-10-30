@@ -4,3 +4,4 @@ dist
 *.local
 .upload-jwt
 deploy-manifest.json
+verify-screenshots/
